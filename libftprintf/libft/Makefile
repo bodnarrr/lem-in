@@ -23,7 +23,8 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
 	ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 	ft_sqrt.c ft_swap.c ft_strswap.c ft_strgsort.c ft_strrev.c get_next_line.c \
-	ft_itoa_base_sign.c ft_itoa_base_unsign.c
+	ft_itoa_base_sign.c ft_itoa_base_unsign.c ft_str_allnum.c ft_str_clean_join.c \
+	ft_strnsymb.c
 
 OFLS = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o \
 	ft_isdigit.o ft_isprint.o ft_itoa.o ft_lstadd.o ft_lstdel.o ft_lstdelone.o \
@@ -36,7 +37,8 @@ OFLS = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o \
 	ft_strncmp.o ft_strncpy.o ft_strnequ.o ft_strnew.o ft_strnstr.o ft_strrchr.o \
 	ft_strsplit.o ft_strstr.o ft_strsub.o ft_strtrim.o ft_tolower.o ft_toupper.o \
 	ft_sqrt.o ft_swap.o ft_strswap.o ft_strgsort.o ft_strrev.o get_next_line.o \
-	ft_itoa_base_sign.o ft_itoa_base_unsign.o
+	ft_itoa_base_sign.o ft_itoa_base_unsign.o ft_str_allnum.o ft_str_clean_join.o \
+	ft_strnsymb.c
 
 .PHONY: all clean fclean re
 

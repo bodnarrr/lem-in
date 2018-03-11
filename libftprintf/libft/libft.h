@@ -101,5 +101,8 @@ void				ft_strrev(char *str);
 char				*ft_itoa_base_sign(intmax_t n, int base);
 char				*ft_itoa_base_unsign(uintmax_t n, int base);
 int					get_next_line(const int fd, char **line);
+int					ft_str_allnum(char *str);
+char				*ft_str_clean_join(char **str1, char **str2);
+int					ft_strnsymb(char *str, char c);
 
 #endif

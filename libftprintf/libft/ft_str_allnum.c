@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_str_allnum.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/09 20:12:33 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/09 20:12:34 by abodnar          ###   ########.fr       */
+/*   Created: 2018/03/11 17:54:46 by abodnar           #+#    #+#             */
+/*   Updated: 2018/03/11 17:54:47 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-int			main(void)
+int		ft_str_allnum(char *str)
 {
-	t_road	*road;
-	t_nodes	*nodes;
-	t_lemin	prm;
+	int	res;
 
-	nodes = ft_get_nodes(&prm); //make all rooms for lem-in algo
-	// connect correct connections;
-	ft_traverse(nodes);
-	road = ft_get_min_trace(nodes); //get road
-	ft_print_result(prm, road);
-	ft_garbage_collector();
+	res = 1;
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (res);
 }

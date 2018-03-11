@@ -1,0 +1,9 @@
+line type:							ID
+1. <int> - count of ants			1+
+2. <##start> - start				2+
+3. <##end> - finish					3+
+4. <#any inf> - comment				4+
+5. <string int int> - room			5
+6. <str-str> - connect				6
+7. <all other> - error				0+
+8. <L any inf> - error				0+

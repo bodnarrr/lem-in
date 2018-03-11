@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lem_in_errors.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/09 20:12:33 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/09 20:12:34 by abodnar          ###   ########.fr       */
+/*   Created: 2018/03/11 13:17:14 by abodnar           #+#    #+#             */
+/*   Updated: 2018/03/11 13:17:15 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#ifndef LEM_IN_ERRORS_H
+# define LEM_IN_ERRORS_H
 
-int			main(void)
-{
-	t_road	*road;
-	t_nodes	*nodes;
-	t_lemin	prm;
+char	*errors[4] = 
+	{
+		"Error: no ants!\n",
+		"Error: incorrect ants number!\n",
+		"Error: incorrect input format!\n",
+		"Error: there is no room with that name!\n",
 
-	nodes = ft_get_nodes(&prm); //make all rooms for lem-in algo
-	// connect correct connections;
-	ft_traverse(nodes);
-	road = ft_get_min_trace(nodes); //get road
-	ft_print_result(prm, road);
-	ft_garbage_collector();
-}
+	};
+
+int	line_type;
+//1 - ants
+//2 - start
+//3 - finish
+//4 - comment
+//5 - connection
+//6 - error
+#endif
