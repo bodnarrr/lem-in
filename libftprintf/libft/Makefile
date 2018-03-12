@@ -38,7 +38,7 @@ OFLS = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o \
 	ft_strsplit.o ft_strstr.o ft_strsub.o ft_strtrim.o ft_tolower.o ft_toupper.o \
 	ft_sqrt.o ft_swap.o ft_strswap.o ft_strgsort.o ft_strrev.o get_next_line.o \
 	ft_itoa_base_sign.o ft_itoa_base_unsign.o ft_str_allnum.o ft_str_clean_join.o \
-	ft_strnsymb.c
+	ft_strnsymb.o
 
 .PHONY: all clean fclean re
 

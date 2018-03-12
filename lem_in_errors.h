@@ -13,12 +13,12 @@
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char	*g_errors[6] = {
+char const	*g_errors[6] = {
 	"Error: incorrect input for ants!",
 	"Error: no ants!",
-	"Error: number of ants can't be negative",
-	"Error: number of ants can't equal zero",
-	"Error: number of ants can't be more than MAX_INT",
-	"Error: nothing was read" };
+	"Error: number of ants can't be negative!",
+	"Error: number of ants can't equal zero!",
+	"Error: number of ants can't be more than MAX_INT!",
+	"Error: nothing was read!" };
 
 #endif

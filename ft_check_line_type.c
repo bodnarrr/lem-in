@@ -12,22 +12,47 @@
 
 #include "lem_in.h"
 
-int 			ft_check_line_type(char *str)
+static int		ft_check_if_room(char **lines)
+{
+	int			res;
+	char		**fordel;
+	int			i;
+
+	res = 0;
+	if (ft_str_allnum(lines[1]) && ft_str_allnum(lines[2]))
+		res = 1;
+	fordel = lines;
+	i = 0;
+	while (lines[i])
+	{
+		ft_strdel(&(lines[i]));
+		i++;
+	}
+	free(fordel);
+	return (res);
+}
+
+/*
+**      ANTS - <int>
+**		ROOM - <name> <int> <int>
+**		CONN - <name1>-<name2>
+*/
+
+int				ft_check_line_type(char *str)
 {
 	if (str[0] == 'L')
-		 return (ERRO);
-	else if (strequ(str, "##start") == 1)
+		return (ERRO);
+	else if (ft_strequ(str, "##start") == 1)
 		return (STRT);
-	else if (strequ(str), "##end" == 1)
+	else if (ft_strequ(str, "##end") == 1)
 		return (FNSH);
-	else if ((str)[0] == '#' && !strequ(str, "##end")
-		&& !strequ(str, "##start"))
+	else if ((str)[0] == '#' && !ft_strequ(str, "##end")
+		&& !ft_strequ(str, "##start"))
 		return (CMNT);
-	else if (ft_str_allnum(str) == 1 && ft_atoi(str) > 0
-		&& ft_atoi(str) <= MAX_INT)
+	else if (ft_str_allnum(str))
 		return (ANTS);
 	else if (ft_strnsymb(str, ' ') == 2
-		&& ft_check_if_room(ft_strsplit(str), ' '))
+		&& ft_check_if_room(ft_strsplit(str, ' ')))
 		return (ROOM);
 	else if (ft_strnsymb(str, '-') == 1)
 		return (CONN);

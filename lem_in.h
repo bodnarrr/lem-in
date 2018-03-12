@@ -26,6 +26,10 @@
 # include <stdbool.h>
 # include <limits.h>
 
+typedef struct s_nodes t_nodes;
+typedef struct s_conns t_conns;
+typedef struct s_queue t_queue;
+
 typedef struct	s_conns
 {
 	t_nodes		*node;
@@ -54,8 +58,9 @@ typedef struct	s_queue
 
 typedef struct	s_lemin
 {
-	int			lems;
+	int			ants;
 	int			road_len;
+	int			err_no;
 	char		*input;
 }				t_lemin;
 
@@ -63,19 +68,21 @@ typedef struct	s_road
 {
 	char		*name;
 	bool		free;
-}				t_lemin;
+}				t_road;
 
-typedef struct	s_lemparse
+typedef struct	s_antparse
 {
 	uint8_t		stage;
 	bool		start;
 	bool		finish;
 	bool		ants;
-	int			err_no;
-	char		*curr_line;
+	char		*cur_lin;
+}				t_antparse;
 
+int				ft_get_ants_number(t_lemin *prm, t_antparse *parse);
+int				ft_check_line_type(char *str);
+int				ft_print_ant_err(t_lemin *prm);
 
-}				t_lemparse;
 
 
 #endif
