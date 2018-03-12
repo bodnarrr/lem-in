@@ -1,11 +1,24 @@
-line type:							ID
-1. <int> - count of ants			1+
-2. <##start> - start				2+
-3. <##end> - finish					3+
-4. <#any inf> - comment				4+
+LINE TYPES:							ID
+
+1. <int> - count of ants			1
+2. <##start> - start				2
+3. <##end> - finish					3
+4. <#any inf> - comment				4
 5. <string int int> - room			5
 6. <str-str> - connect				6
-7. <all other> - error				0+
-8. <L any inf> - error				0+
+7. <all other> - error				0
+8. <L any inf> - error				0
 
+
+ERRORS												ID
+
+"Error: incorrect input for ants!\n",					0
+"Error: no ants!\n",									1
+"Error: number of ants can't be negative\n",			2
+"Error: number of ants can't equal zero\n",				3
+"Error: number of ants can't be more than MAX_INT\n",	4
+
+"Error: nothing was read"								5
+
+"Error: there is no room with that name!\n",			6
 

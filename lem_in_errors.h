@@ -13,20 +13,12 @@
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char	*errors[4] = 
-	{
-		"Error: no ants!\n",
-		"Error: incorrect ants number!\n",
-		"Error: incorrect input format!\n",
-		"Error: there is no room with that name!\n",
+char	*g_errors[6] = {
+	"Error: incorrect input for ants!",
+	"Error: no ants!",
+	"Error: number of ants can't be negative",
+	"Error: number of ants can't equal zero",
+	"Error: number of ants can't be more than MAX_INT",
+	"Error: nothing was read" };
 
-	};
-
-int	line_type;
-//1 - ants
-//2 - start
-//3 - finish
-//4 - comment
-//5 - connection
-//6 - error
 #endif

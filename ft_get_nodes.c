@@ -12,50 +12,69 @@
 
 #include "lem_in.h"
 
-int 			ft_check_line_type(t_lemparce *parce)
+static int		ft_check_if_room(char **lines)
 {
 	int			res;
+	char		**fordel;
 
 	res = 0;
-	if ((parce->curr_line)[0] == 'L')
-		res = ERRO;
-	else if (strequ(parce->curr_line, "##start") == 1)
-		res = STRT;
-	else if (strequ(parce->curr_line), "##end" == 1)
-		res = FNSH;
-	else if ((parce->curr_line)[0] == '#' && strequ(parce->curr_line, "##end") == 0)
-		res = CMNT;
-	else if (ft_str_allnum(parce->curr_line) == 1 && ft_atoi(parce->curr_line) > 0
-		&& ft_atoi(parce->curr_line) <= MAX_INT)
-		res = ANTS;
-	else if (ft_strnsymb(parce->curr_line, ' ') == 2 &&)
-
-	else
-		res = ERRO;
-
+	if (ft_str_allnum((*lines)[1]) && ft_str_allnum((*lines)[2]))
+		res = 1;
+	fordel = lines;
+	while (*lines)
+	{
+		ft_strdel(*lines);
+		lines++;
+	}
+	free(fordel);
+	return (res);
 }
 
-void static		ft_initialize_parcing(t_lemparce *parce)
-{
-	ft_bzero(parce, sizeof(t_lemparce));
-	parce->err_no = -1;
-}
+/*
+**      ANTS - <int>
+**		ROOM - <name> <int> <int>
+**		CONN - <name1>-<name2>
+*/
+
+
 
 t_nodes			*ft_get_nodes(t_lemin *prm)
 {
 	t_nodes		*all;
 	t_nodes		*head;
-	t_lemparce 	parce;
+	t_lemparse 	parse;
+	char		rt;
 
-	ft_initialize_parcing(&parce);
-	get_next_line(0, &(parce->curr_line));
-	if (ft_check_line_type(&parce) == 1 && ft_atoi(parce->curr_line) > 0)
-		prm->lems = ft_atoi()
-	if ()
-	while (parce->err_no < 0)
+	ft_initialize_parcing(&parse);
+
+	//get number of ants
+	if (rt = get_next_line(0, &(parse.cur_lin)) == 1)
 	{
-		get_next_line(0, &(parce->curr_line));
-		ft_take_inf_from_line(&parce, ft_check_line_type(&parce));
+		if (ft_check_line_type(parse.cur_lin) == 1 && ft_atoi(parse.cur_lin) > 0
+		ft_atoi(parse.cur_lin) <= MAX_INT)
+		{
+			prm->lems = ft_atoi(parse->cur_lin);
+			parse->stage = 1;
+			prm->input = ft_str_clear_join(&(prm->input), &(parse.cur_lin));
+			ft_strdel(&(parse->cur_lin));
+		}
+		else if (ft_check_line_type(parse.cur_lin) == CMNT)
+		{
+			prm->input = ft_str_clear_join(&(prm->input), &(parse.cur_lin));
+			ft_strdel(&(parse->cur_lin));
+		}
+		else
+		{
+			ft_check_anterr_type(parse->cur_lin, prm);
+			return (NULL);
+		}
+	}
+
+
+	while (parse->err_no < 0)
+	{
+		get_next_line(0, &(parse->cur_lin));
+		ft_take_inf_from_line(&parse, ft_check_line_type(&parse));
 	}
 }
 	

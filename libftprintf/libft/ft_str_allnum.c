@@ -15,13 +15,16 @@
 int		ft_str_allnum(char *str)
 {
 	int	res;
+	int	i;
 
 	res = 1;
-	while (*str)
+	i = -1;
+	while (str[++i])
 	{
-		if (*str < '0' || *str > '9')
+		if ((str[i] == '-' && i == 0) || (str[i] >= '0' && str[i] <= '9'))
+			continue ;
+		else
 			return (0);
-		str++;
 	}
 	return (res);
 }

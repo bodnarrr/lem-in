@@ -65,7 +65,7 @@ typedef struct	s_road
 	bool		free;
 }				t_lemin;
 
-typedef struct	s_lemparce
+typedef struct	s_lemparse
 {
 	uint8_t		stage;
 	bool		start;
@@ -75,7 +75,7 @@ typedef struct	s_lemparce
 	char		*curr_line;
 
 
-}				t_lemparce;
+}				t_lemparse;
 
 
 #endif

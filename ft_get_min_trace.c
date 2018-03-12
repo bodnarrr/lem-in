@@ -21,7 +21,7 @@ t_road		*ft_get_min_trace(t_nodes *all)
 	head = all;
 	while (all->fin != 1)
 		all = all->next;
-	road = (t_road*)malloc(sizeof(t_road * (all->dest + 1));
+	road = (t_road*)malloc(sizeof(t_road) * (all->dest + 1));
 	i = 0;
 	while (all != NULL)
 	{
