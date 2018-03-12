@@ -10,18 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-t_rooms		*ft_make_room(char *name, int x, int y, int	st_fn) //-1 for start || 1 for finish
-{
-	t_rooms	*ret;
+#include "lem_in.h"
 
-	ret = (t_rooms*)malloc(sizeof(t_rooms));
-	ft_bzero(ret, sizeof(t_rooms));
-	ret->name = ft_strdup(name);
-	ret->x = x;
-	ret->y = y;
-	if (st_fn == -1)
-		ret->start = 1;
-	else if (st_fn == 1)
-		ret->fin = 1;
-	return (ret);
+static void	ft_clear_arg(char **str)
+{
+	int		i;
+
+	i = -1;
+	while (++i < 3)
+		ft_strdel(&(str[i]));
+	free (str);
+}
+
+void		ft_make_room(t_nodes *head, t_antparse *p, char **room) //-1 for start || 1 for finish
+{
+	t_rooms	*new;
+	
+	new = (t_nodes*)malloc(sizeof(t_nodes));
+	ft_bzero(new, sizeof(t_nodes));
+	new->name = ft_strdup(room[0]);
+	new->x = ft_atoi(room[1]);
+	new->y = ft_atoi(room[2]);
+	if (p->start == 0 && (new->start = 1))
+		p->start = 1;
+	if (p->finish == 0 && (new->fin = 1))
+		p->finish = 1;
+	if (head)
+	{
+		while (head->next)
+			head = head->next;
+		head->next = new;
+	}
+	else
+		all = head;
+	ft_clear_arg(room);
 }

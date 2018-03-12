@@ -72,7 +72,6 @@ typedef struct	s_road
 
 typedef struct	s_antparse
 {
-	uint8_t		stage;
 	bool		start;
 	bool		finish;
 	bool		ants;

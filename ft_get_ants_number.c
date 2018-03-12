@@ -47,7 +47,6 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 		&& ft_atoi(p->cur_lin) <= INT_MAX)
 		{
 			prm->ants = ft_atoi(p->cur_lin);
-			p->stage = 1;
 			prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 			ft_strdel(&(p->cur_lin));
 			return (prm->ants);
