@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_anterr_type.c                                :+:      :+:    :+:   */
+/*   ft_strnsymb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/12 12:51:52 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/12 12:51:53 by abodnar          ###   ########.fr       */
+/*   Created: 2018/03/12 14:43:58 by abodnar           #+#    #+#             */
+/*   Updated: 2018/03/12 14:44:52 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "libft.h"
 
-void	ft_check_anterr_type(char *str, t_lemin *prm)
+int		ft_strnsymb(char *str, char c)
 {
-	if (ft_check_line_type(str) != ANTS && ft_check_line_type(str) != CMNT)
-		prm->err_no = 0;
-	if (ft_str_allnum(str))
-	{
-		if (ft_atoi(str) < 0)
-			prm->err_no = 1;
-		else if (ft_atoi(str) == 0)
-			prm->err_no = 2;
-		else if (ft_atoi(str) > MAX_INT)
-			prm->err = 3;
-	}
-	else if ()
+	int	res;
 
+	res = 0;
+	while (*str)
+	{
+		if (*str == c)
+			res++;
+		str++;
+	}
+	return (res);
 }
