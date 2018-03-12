@@ -72,8 +72,8 @@ typedef struct	s_road
 
 typedef struct	s_antparse
 {
-	bool		start;
-	bool		finish;
+	char		start;
+	char		finish;
 	bool		ants;
 	char		*cur_lin;
 }				t_antparse;
@@ -81,6 +81,8 @@ typedef struct	s_antparse
 int				ft_get_ants_number(t_lemin *prm, t_antparse *parse);
 int				ft_check_line_type(char *str);
 int				ft_print_ant_err(t_lemin *prm);
+void			ft_add_room(t_nodes *head, t_antparse *p, char **room);
+t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p);
 
 
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_make_room.c                                     :+:      :+:    :+:   */
+/*   ft_add_room.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,10 +22,13 @@ static void	ft_clear_arg(char **str)
 	free (str);
 }
 
-void		ft_make_room(t_nodes *head, t_antparse *p, char **room) //-1 for start || 1 for finish
+void		ft_add_room(t_nodes *head, t_antparse *p, char **room)
 {
-	t_rooms	*new;
+	t_nodes	*new;
 	
+	//check if there is a room with this name
+
+	ft_printf("start adding room\n");
 	new = (t_nodes*)malloc(sizeof(t_nodes));
 	ft_bzero(new, sizeof(t_nodes));
 	new->name = ft_strdup(room[0]);
@@ -42,6 +45,7 @@ void		ft_make_room(t_nodes *head, t_antparse *p, char **room) //-1 for start || 
 		head->next = new;
 	}
 	else
-		all = head;
+		head = new;
 	ft_clear_arg(room);
+	ft_printf("room added\n");
 }

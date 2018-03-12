@@ -18,6 +18,7 @@ void static		ft_initialize_parsing(t_antparse *parse, t_lemin *prm)
 	ft_bzero(prm, sizeof(t_lemin));
 	parse->start = -1;
 	parse->finish = -1;
+	parse->cur_lin = ft_strnew(0);
 	prm->input = ft_strnew(0);
 	prm->err_no = -1;
 }
@@ -25,16 +26,17 @@ void static		ft_initialize_parsing(t_antparse *parse, t_lemin *prm)
 int			main(void)
 {
 	// t_road		*road;
-	// t_nodes		*nodes;
+	t_nodes		*nodes;
 	t_lemin		prm;
 	t_antparse	parse;
 
 	ft_initialize_parsing(&parse, &prm);
 	if (ft_get_ants_number(&prm, &parse) == -1 && ft_print_ant_err(&prm))
 		return (1);
-	// ft_printf("ants = %d\n", prm.ants);
+	ft_printf("ants = %d\n", prm.ants);
 
-	// if ((nodes = ft_get_nodes(&prm, &parse)) == NULL) //make all rooms for lem-in algo
+	if ((nodes = ft_get_nodes(&prm, &parse)) == NULL) //make all rooms for lem-in algo
+		ft_printf("No nodes!\n");
 	// 	ft_print_nodes_err(&prm);
 	// // connect correct connections;
 	// ft_traverse(nodes);

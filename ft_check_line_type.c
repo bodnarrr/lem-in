@@ -51,7 +51,7 @@ int				ft_check_line_type(char *str)
 		return (CMNT);
 	else if (ft_str_allnum(str))
 		return (ANTS);
-	else if (ft_strnsymb(str, ' ') == 2
+	else if (ft_strnsymb(str, ' ') == 2 && ft_word_count(str, ' ') == 3
 		&& ft_check_if_room(ft_strsplit(str, ' ')))
 		return (ROOM);
 	else if (ft_strnsymb(str, '-') == 1)
