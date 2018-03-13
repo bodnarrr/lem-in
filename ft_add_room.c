@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-static void	ft_clear_arg(char **str)
+void		ft_clear_arg_room(char **str)
 {
 	int		i;
 
@@ -22,13 +22,11 @@ static void	ft_clear_arg(char **str)
 	free (str);
 }
 
-void		ft_add_room(t_nodes *head, t_antparse *p, char **room)
+void		ft_add_room(t_nodes **head, t_antparse *p, char **room)
 {
 	t_nodes	*new;
-	
-	//check if there is a room with this name
+	t_nodes	*all;
 
-	ft_printf("start adding room\n");
 	new = (t_nodes*)malloc(sizeof(t_nodes));
 	ft_bzero(new, sizeof(t_nodes));
 	new->name = ft_strdup(room[0]);
@@ -38,14 +36,14 @@ void		ft_add_room(t_nodes *head, t_antparse *p, char **room)
 		p->start = 1;
 	if (p->finish == 0 && (new->fin = 1))
 		p->finish = 1;
-	if (head)
+	all = *head;
+	if (head && *head)
 	{
-		while (head->next)
-			head = head->next;
-		head->next = new;
+		while (all->next)
+			all = all->next;
+		all->next = new;
 	}
 	else
-		head = new;
-	ft_clear_arg(room);
-	ft_printf("room added\n");
+		*head = new;
+	ft_clear_arg_room(room);
 }

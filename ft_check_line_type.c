@@ -54,7 +54,8 @@ int				ft_check_line_type(char *str)
 	else if (ft_strnsymb(str, ' ') == 2 && ft_word_count(str, ' ') == 3
 		&& ft_check_if_room(ft_strsplit(str, ' ')))
 		return (ROOM);
-	else if (ft_strnsymb(str, '-') == 1)
+	else if (ft_strnsymb(str, '-') == 1 && ft_word_count(str, '-') == 2
+		&& !ft_strnsymb(str, ' '))
 		return (CONN);
 	return (ERRO);
 }

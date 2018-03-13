@@ -26,7 +26,7 @@ void static		ft_initialize_parsing(t_antparse *parse, t_lemin *prm)
 int			main(void)
 {
 	// t_road		*road;
-	t_nodes		*nodes;
+    t_nodes		*nodes;
 	t_lemin		prm;
 	t_antparse	parse;
 
@@ -35,8 +35,16 @@ int			main(void)
 		return (1);
 	ft_printf("ants = %d\n", prm.ants);
 
-	if ((nodes = ft_get_nodes(&prm, &parse)) == NULL) //make all rooms for lem-in algo
-		ft_printf("No nodes!\n");
+	if ((nodes = ft_get_nodes(&prm, &parse)) == NULL && ft_print_ant_err(&prm)) //make all rooms for lem-in algo
+	    return (1);
+	while (nodes)
+	{
+		ft_printf("Name: %s\nX = %d\nY = %d\n\n", nodes->name, nodes->x, nodes->y);
+		nodes = nodes->next;
+	}
+	ft_clear_nodes(&nodes);
+
+	
 	// 	ft_print_nodes_err(&prm);
 	// // connect correct connections;
 	// ft_traverse(nodes);

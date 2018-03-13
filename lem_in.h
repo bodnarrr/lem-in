@@ -81,8 +81,10 @@ typedef struct	s_antparse
 int				ft_get_ants_number(t_lemin *prm, t_antparse *parse);
 int				ft_check_line_type(char *str);
 int				ft_print_ant_err(t_lemin *prm);
-void			ft_add_room(t_nodes *head, t_antparse *p, char **room);
+void			ft_add_room(t_nodes **head, t_antparse *p, char **room);
 t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p);
+void			ft_clear_arg_room(char **str);
+void			ft_clear_nodes(t_nodes **all);
 
 
 

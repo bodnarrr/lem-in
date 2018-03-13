@@ -23,11 +23,14 @@ int			ft_print_ant_err(t_lemin *prm)
 
 static int	ft_check_anterr_type(char *str, t_lemin *prm)
 {
+	int		line_type;
+
+	line_type = ft_check_line_type(str);
 	if (ft_strlen(str) == 0)
 		prm->err_no = 9;
-	else if (ft_check_line_type(str) == ERRO)
+	else if (line_type == ERRO)
 		prm->err_no = 0;
-	else if (ft_check_line_type(str) != ANTS && ft_check_line_type(str) != CMNT)
+	else if (line_type != ANTS && line_type != CMNT)
 		prm->err_no = 1;
 	else if (ft_str_allnum(str))
 	{
@@ -43,18 +46,20 @@ static int	ft_check_anterr_type(char *str, t_lemin *prm)
 
 int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 {
+	int		line_type;
 	if (get_next_line(0, &(p->cur_lin)) == 1)
 	{
 		//look for problem in line type checking
-		if (ft_check_line_type(p->cur_lin) == ANTS && ft_atoi(p->cur_lin) > 0
-		&& ft_atoi(p->cur_lin) <= INT_MAX)
+		line_type = ft_check_line_type(p->cur_lin);
+		if (line_type == ANTS && ft_atoi(p->cur_lin) > 0
+			&& ft_atoi(p->cur_lin) <= INT_MAX)
 		{
 			prm->ants = ft_atoi(p->cur_lin);
 			prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 			ft_strdel(&(p->cur_lin));
 			return (prm->ants);
 		}
-		else if (ft_check_line_type(p->cur_lin) == CMNT && (prm->input =
+		else if (line_type == CMNT && (prm->input =
 			ft_str_clean_join(&(prm->input), &(p->cur_lin))))
 		{
 			ft_strdel(&(p->cur_lin));
@@ -64,9 +69,7 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 			return (-1);
 	}
 	else
-	{
 		ft_printf("WAT???\n");
-	}
 	prm->err_no = 5;
 	return (-1);
 }

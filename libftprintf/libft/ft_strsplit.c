@@ -20,14 +20,17 @@ static char	*ft_save_words(char const *str, char delim)
 	if (str == NULL)
 		return (NULL);
 	i = 0;
-	while (str[i] != delim)
+	while (str[i] && str[i] != delim)
 		i++;
 	word = (char*)malloc(sizeof(char) * (i + 1));
 	if (word == NULL)
 		return (NULL);
-	i = -1;
-	while (str[++i] != delim)
-		word[i] = str[i];
+	i = 0;
+	while (str[i] && str[i] != delim)
+    {
+        word[i] = str[i];
+        i++;
+    }
 	word[i] = '\0';
 	return (word);
 }
@@ -49,7 +52,7 @@ char		**ft_strsplit(char const *s, char c)
 		while (*s == c)
 			s++;
 		res[i++] = ft_save_words(s, c);
-		while (*s != c && *s)
+		while (*s && *s != c)
 			s++;
 	}
 	res[i] = NULL;

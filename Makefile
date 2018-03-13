@@ -21,12 +21,14 @@ OBJECTS = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
+HEADERS = *.h
+
 all: $(NAME)
 
 %.o : %.c
 	@gcc -I. -I./libftprintf $(FLAGS) -c $< -o $@
 
-$(NAME): $(LIB) $(OBJECTS)
+$(NAME): $(LIB) $(OBJECTS) $(HEADERS)
 	@gcc -o $@ -I. -I./libftprintf $(OBJECTS) $(LIB)
 	@echo "\033[1;32mLem-in is ready\033[0m"
 
