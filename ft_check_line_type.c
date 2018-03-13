@@ -40,7 +40,7 @@ static int		ft_check_if_room(char **lines)
 
 int				ft_check_line_type(char *str)
 {
-	if (str[0] == 'L' || !ft_strlen(str))
+	if (str[0] == 'L')
 		return (ERRO);
 	else if (ft_strequ(str, "##start") == 1)
 		return (STRT);

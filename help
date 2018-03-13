@@ -25,10 +25,8 @@ ROOMS ERRORS
 "Error: double start!",										6
 "Error: double finish!"										7
 "Error: no connections between the nodes"					8
-"Error: the rooms can't have same names"                    10
-"Error: the rooms can't have same coordinates"				11
-"Error: incorrect input for rooms!"							12
-
-EMPTY LINE
-"Error: empty lines are not allowed while reading input!"	9
+"Error: the rooms can't have same names"                    9
+"Error: the rooms can't have same coordinates"				10
+"Error: incorrect input for rooms!"							11
+"Error: incorrect room name!"								12
 

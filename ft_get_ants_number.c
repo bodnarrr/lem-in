@@ -26,11 +26,9 @@ static int	ft_check_anterr_type(char *str, t_lemin *prm)
 	int		line_type;
 
 	line_type = ft_check_line_type(str);
-	if (ft_strlen(str) == 0)
-		prm->err_no = 9;
-	else if (line_type == ERRO)
+	if (line_type == ERRO)
 		prm->err_no = 0;
-	else if (line_type != ANTS && line_type != CMNT)
+	else if ((line_type != ANTS && line_type != CMNT) || ft_strlen(str) == 0)
 		prm->err_no = 1;
 	else if (ft_str_allnum(str))
 	{
@@ -49,7 +47,6 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 	int		line_type;
 	if (get_next_line(0, &(p->cur_lin)) == 1)
 	{
-		//look for problem in line type checking
 		line_type = ft_check_line_type(p->cur_lin);
 		if (line_type == ANTS && ft_atoi(p->cur_lin) > 0
 			&& ft_atoi(p->cur_lin) <= INT_MAX)
@@ -68,8 +65,6 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 		else if (ft_check_anterr_type(p->cur_lin, prm) >= 0)
 			return (-1);
 	}
-	else
-		ft_printf("WAT???\n");
 	prm->err_no = 5;
 	return (-1);
 }

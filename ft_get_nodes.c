@@ -21,18 +21,18 @@ static int		ft_room_check(t_nodes *head, t_antparse *p, t_lemin *prm)
 	res = 1;
 	while (head && res == 1)
 	{
-		if (ft_strequ(args[0], head->name) && (prm->err_no = 10) == 10)
+		if (ft_strequ(args[0], head->name) && (prm->err_no = 9) == 9)
 			res = 0;
 		if (ft_atoi(args[1]) == head->x && ft_atoi(args[2]) == head->y)
 		{
-			prm->err_no = 11;
+			prm->err_no = 10;
 			res = 0;
 		}
 		head = head->next;
 	}
 	if (ft_strchr(args[0], '-'))
 	{
-		prm->err_no = 13;
+		prm->err_no = 12;
 		res = 0;
 	}
 	ft_clear_arg_room(args);
@@ -70,7 +70,9 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 		if (get_next_line(0, &(p->cur_lin)))
 		{
 			line_type = ft_check_line_type(p->cur_lin);
-			if (line_type == ROOM)
+			if (ft_strlen(p->cur_lin) == 0)
+				return (head);
+			else if (line_type == ROOM)
 			{
 				if (ft_room_check(head, p, prm) == 1)
 				{
@@ -125,20 +127,13 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 			}
 			else if (line_type == ERRO || line_type == ANTS)
 			{
-				if (ft_strlen(p->cur_lin) == 0)
-					prm->err_no = 9;
-				else
-					prm->err_no = 12;
+				prm->err_no = 11;
 				ft_clear_nodes(&head);
 				return (head);
 			}
 		}
 		else
-		{
-			ft_clear_nodes(&head);
-			prm->err_no = 14;
 			return (head);
-		}
 	}
 	return (head);
 }
