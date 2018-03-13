@@ -43,21 +43,6 @@ static int		ft_room_check(t_nodes *head, t_antparse *p, t_lemin *prm)
 **		On this stage there aren't allocated connections with other nodes
 */
 
-void			ft_clear_nodes(t_nodes **all)
-{
-	t_nodes		*fordel;
-
-	if (!all || !*all)
-		return ;
-	while (*all)
-	{
-		fordel = *all;
-		ft_strdel(&((*all)->name));
-		*all = (*all)->next;
-		free(fordel);
-	}
-}
-
 t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 {
 	t_nodes		*head;
@@ -84,11 +69,6 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 					ft_clear_nodes(&head);
 					return (head);
 				}
-			}
-			else if (line_type == CONN)
-			{
-				ft_strdel(&(p->cur_lin));
-				return (head);
 			}
 			else if (line_type == STRT)
 			{
@@ -129,6 +109,11 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 			{
 				prm->err_no = 11;
 				ft_clear_nodes(&head);
+				return (head);
+			}
+			else if (line_type == CONN)
+			{
+				ft_strdel(&(p->cur_lin));
 				return (head);
 			}
 		}

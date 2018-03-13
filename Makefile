@@ -15,7 +15,7 @@ NAME = lem-in
 LIB = libftprintf.a
 
 SRCS =	main.c ft_get_ants_number.c ft_check_line_type.c ft_get_nodes.c \
-		ft_add_room.c
+		ft_add_room.c ft_clear_nodes.c ft_check_nodes.c
 
 OBJECTS = $(SRCS:.c=.o)
 

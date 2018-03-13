@@ -13,7 +13,7 @@
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char const	*g_errors[14] = {
+char const	*g_errors[13] = {
 	"Error: incorrect input for ants!",
 	"Error: no ants!",
 	"Error: number of ants can't be negative!",
