@@ -29,7 +29,7 @@ all: $(NAME)
 	@gcc -I. -I./libftprintf $(FLAGS) -c $< -o $@
 
 $(NAME): $(LIB) $(OBJECTS) $(HEADERS)
-	@gcc -o $@ -I. -I./libftprintf $(OBJECTS) $(LIB)
+	@gcc -g -o $@ -I. -I./libftprintf $(OBJECTS) $(LIB)
 	@echo "\033[1;32mLem-in is ready\033[0m"
 
 $(LIB):

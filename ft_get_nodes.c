@@ -52,16 +52,22 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 	line_type = 0;
 	while (1)
 	{
+		ft_printf("line # %d\n", prm->line);
 		if (get_next_line(0, &(p->cur_lin)))
 		{
 			line_type = ft_check_line_type(p->cur_lin);
 			if (ft_strlen(p->cur_lin) == 0)
+			{
+				if (prm->line == 2)
+					prm->err_no = 15;
 				return (head);
+			}
 			else if (line_type == ROOM)
 			{
 				if (ft_room_check(head, p, prm) == 1)
 				{
 					ft_add_room(&head, p, ft_strsplit(p->cur_lin, ' '));
+					(prm->line)++;
 					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 				}
 				else
@@ -75,6 +81,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				if (p->start == -1)
 				{
 					p->start = 0;
+					(prm->line)++;
 					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 				}
 				else
@@ -90,6 +97,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				if (p->finish == -1)
 				{
 					p->finish = 0;
+					(prm->line)++;
 					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 				}
 				else
@@ -102,6 +110,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 			}
 			else if (line_type == CMNT)
 			{
+				(prm->line)++;
 				prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 				ft_strdel(&(p->cur_lin));
 			}
@@ -113,6 +122,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 			}
 			else if (line_type == CONN)
 			{
+				(prm->line)++;
 				ft_strdel(&(p->cur_lin));
 				return (head);
 			}

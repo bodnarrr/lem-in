@@ -29,4 +29,6 @@ ROOMS ERRORS
 "Error: the rooms can't have same coordinates"				10
 "Error: incorrect input for rooms!"							11
 "Error: incorrect room name!"								12
-
+"Error: no start room!"										13
+"Error: no end room!"										14
+"Error: no start and no end!"								15

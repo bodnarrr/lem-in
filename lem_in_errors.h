@@ -13,7 +13,7 @@
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char const	*g_errors[13] = {
+char const	*g_errors[16] = {
 	"Error: incorrect input for ants!",
 	"Error: no ants!",
 	"Error: number of ants can't be negative!",
@@ -26,6 +26,9 @@ char const	*g_errors[13] = {
 	"Error: the rooms can't have same names",
 	"Error: the rooms can't have same coordinates",
 	"Error: incorrect input for rooms!",
-	"Error: incorrect room name!"};
+	"Error: incorrect room name!",
+	"Error: no start room!",
+	"Error: no end room!",
+	"Error: no start and no end!"};
 
 #endif

@@ -19,6 +19,7 @@ void static		ft_initialize_parsing(t_antparse *parse, t_lemin *prm)
 	parse->start = -1;
 	parse->finish = -1;
 	parse->cur_lin = ft_strnew(0);
+	prm->line = 1;
 	prm->input = ft_strnew(0);
 	prm->err_no = -1;
 }
@@ -37,14 +38,15 @@ int			main(void)
 
 	if ((nodes = ft_get_nodes(&prm, &parse)) == NULL && ft_print_ant_err(&prm)) //make all rooms for lem-in algo
 	    return (1);
-	if (ft_check_nodes(&nodes, &prm, &parse) == -1 && ft_print_ant_err(&prm))
+	if (ft_check_nodes(&nodes, &parse, &prm) == -1 && ft_print_ant_err(&prm))
 		return (1);
 	while (nodes)
 	{
 		ft_printf("Name: %s\nX = %d\nY = %d\n\n", nodes->name, nodes->x, nodes->y);
 		nodes = nodes->next;
 	}
-	ft_printf("%d\n%d\n", parse.start, parse.finish);
+	if (ft_get_connects(&nodes, &parse, &prm) == NULL && ft_print_ant_err(&prm))
+	    return (1);
 	ft_clear_nodes(&nodes);
 
 	

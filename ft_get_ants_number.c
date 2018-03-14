@@ -17,6 +17,7 @@ int			ft_print_ant_err(t_lemin *prm)
 {
 	ft_strdel(&(prm->input));
 	ft_printf("Error No. %d\n", prm->err_no);
+	ft_printf("Line %d: ", prm->line);
 	ft_printf("%s\n", g_errors[prm->err_no]);
 	return (1);
 }
@@ -54,12 +55,14 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 			prm->ants = ft_atoi(p->cur_lin);
 			prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
 			ft_strdel(&(p->cur_lin));
+			(prm->line)++;
 			return (prm->ants);
 		}
 		else if (line_type == CMNT && (prm->input =
 			ft_str_clean_join(&(prm->input), &(p->cur_lin))))
 		{
 			ft_strdel(&(p->cur_lin));
+			(prm->line)++;
 			return (ft_get_ants_number(prm, p));
 		}
 		else if (ft_check_anterr_type(p->cur_lin, prm) >= 0)

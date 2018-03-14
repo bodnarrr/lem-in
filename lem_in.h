@@ -52,7 +52,7 @@ typedef struct	s_nodes
 
 typedef struct	s_queue
 {
-	t_nodes		*room;
+	t_nodes		*node;
 	t_queue		*next;
 }				t_queue;
 
@@ -61,6 +61,7 @@ typedef struct	s_lemin
 	int			ants;
 	int			road_len;
 	int			err_no;
+	int			line;
 	char		*input;
 }				t_lemin;
 
@@ -85,7 +86,7 @@ void			ft_add_room(t_nodes **head, t_antparse *p, char **room);
 t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p);
 void			ft_clear_arg_room(char **str);
 void			ft_clear_nodes(t_nodes **all);
-int				ft_check_nodes(t_nodes **all, t_lemin *prm);
+int				ft_check_nodes(t_nodes **all, t_antparse *p, t_lemin *prm);
 
 
 
