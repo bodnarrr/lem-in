@@ -12,16 +12,6 @@
 
 #include "lem_in.h"
 
-void		ft_clear_arg_room(char **str)
-{
-	int		i;
-
-	i = -1;
-	while (++i < 3)
-		ft_strdel(&(str[i]));
-	free (str);
-}
-
 void		ft_add_room(t_nodes **head, t_antparse *p, char **room)
 {
 	t_nodes	*new;
@@ -45,5 +35,5 @@ void		ft_add_room(t_nodes **head, t_antparse *p, char **room)
 	}
 	else
 		*head = new;
-	ft_clear_arg_room(room);
+	ft_clear_lines(room, 3);
 }

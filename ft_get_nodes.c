@@ -35,7 +35,7 @@ static int		ft_room_check(t_nodes *head, char *str, t_lemin *prm)
 		prm->err_no = 12;
 		res = 0;
 	}
-	ft_clear_arg_room(args);
+	ft_clear_lines(args, 3);
 	return (res);
 }
 

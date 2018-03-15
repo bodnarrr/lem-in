@@ -18,7 +18,6 @@ void static		ft_initialize_parsing(t_antparse *parse, t_lemin *prm)
 	ft_bzero(prm, sizeof(t_lemin));
 	parse->start = -1;
 	parse->finish = -1;
-	parse->cur_lin = ft_strnew(0);
 	prm->line = 0;
 	prm->input = ft_strnew(0);
 	prm->err_no = -1;
@@ -29,6 +28,7 @@ int			main(void)
 	// t_road		*road;
     t_nodes		*nodes;
     t_nodes     *test_copy;
+    t_conns		*test_conns;
 	t_lemin		prm;
 	t_antparse	parse;
 
@@ -42,24 +42,26 @@ int			main(void)
 	if (ft_check_nodes(&nodes, &parse, &prm) == NULL && ft_print_ant_err(&prm))
 		return (1);
 	if (ft_get_connects(&nodes, &parse, &prm) == NULL && ft_print_ant_err(&prm))
-	    return (1);
-    test_copy = nodes;
-    while (test_copy)
-    {
-        ft_printf("Name: %s\nX = %d\nY = %d\n", test_copy->name, test_copy->x, test_copy->y);
-        if (test_copy->conn)
-        {
-            while(test_copy->conn)
-            {
-                ft_printf("conn = %s\n", test_copy->conn->node->name);
-                test_copy->conn = test_copy->conn->next;
-            }
-            ft_printf("\n");
-        }
-        test_copy = test_copy->next;
-    }
+		return (1);
+	test_copy = nodes;
+	while (test_copy)
+   {
+       ft_printf("Name: %s\nX = %d\nY = %d\n", test_copy->name, test_copy->x, test_copy->y);
+       if (test_copy->conn)
+       {
+       	test_conns = test_copy->conn;
+           while(test_conns)
+           {
+               ft_printf("conn = %s\n", test_conns->node->name);
+               test_conns = test_conns->next;
+           }
+           ft_printf("\n");
+       }
+       test_copy = test_copy->next;
+   }
 	ft_printf("Looks like all OK\n");
 	ft_clear_nodes(&nodes);
+	ft_strdel(&(prm.input));
 
 	
 	// 	ft_print_nodes_err(&prm);

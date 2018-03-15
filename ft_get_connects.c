@@ -15,28 +15,29 @@
 static void		ft_add_new_conn(t_nodes *add, t_nodes *add_to)
 {
 	t_conns		*new;
+	t_conns		*cpy;
 
     if (add == add_to)
         return ;
-	if (add_to->conn)
+	if ((cpy = add_to->conn))
 	{
-		while (add_to->conn->next)
+		while (cpy->next)
 		{
-			if (add_to->conn->node == add)
+			if (cpy->node == add)
 				return ;
-			add_to->conn = add_to->conn->next;
+			cpy = cpy->next;
 		}
 		new = (t_conns*)malloc(sizeof(t_conns));
 		new->node = add;
 		new->next = NULL;
-		add_to->conn->next = new;
+		cpy->next = new;
 	}
 	else
 	{
 		new = (t_conns*)malloc(sizeof(t_conns));
         new->node = add;
         new->next = NULL;
-		add_to->conn = new;
+        add_to->conn = new;
 	}
 }
 
@@ -46,6 +47,8 @@ static void		ft_add_conn(t_nodes **all, char **names)
 	t_nodes	*name_two;
 	t_nodes	*head;
 
+	name_one = NULL;
+	name_two = NULL;
 	head = *all;
 	while (head)
 	{
@@ -53,11 +56,13 @@ static void		ft_add_conn(t_nodes **all, char **names)
 			name_one = head;
 		if (ft_strequ(head->name, names[1]))
 			name_two = head;
+		if (name_one && name_two)
+			break ;
 		head = head->next;
 	}
 	ft_add_new_conn(name_one, name_two);
 	ft_add_new_conn(name_two, name_one);
-
+	ft_clear_lines(names, 2);
 }
 
 static int	ft_conn_check(t_nodes *all, char *str, t_lemin *prm)

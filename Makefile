@@ -16,6 +16,7 @@ LIB = libftprintf.a
 
 SRCS =	main.c ft_get_ants_number.c ft_check_line_type.c ft_get_nodes.c \
 		ft_add_room.c ft_clear_nodes.c ft_check_nodes.c ft_get_connects.c \
+		ft_clear_lines.c
 		
 
 OBJECTS = $(SRCS:.c=.o)
@@ -27,7 +28,7 @@ HEADERS = *.h
 all: $(NAME)
 
 %.o : %.c
-	@gcc -I. -I./libftprintf $(FLAGS) -c $< -o $@
+	@gcc -g -I. -I./libftprintf $(FLAGS) -c $< -o $@
 
 $(NAME): $(LIB) $(OBJECTS) $(HEADERS)
 	@gcc -g -o $@ -I. -I./libftprintf $(OBJECTS) $(LIB)
