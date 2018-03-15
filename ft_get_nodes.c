@@ -12,12 +12,12 @@
 
 #include "lem_in.h"
 
-static int		ft_room_check(t_nodes *head, t_antparse *p, t_lemin *prm)
+static int		ft_room_check(t_nodes *head, char *str, t_lemin *prm)
 {
 	char		**args;
 	int			res;
 
-	args = ft_strsplit(p->cur_lin, ' ');
+	args = ft_strsplit(str, ' ');
 	res = 1;
 	while (head && res == 1)
 	{
@@ -52,19 +52,17 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 	line_type = 0;
 	while (1)
 	{
-		ft_printf("line # %d\n", prm->line);
 		if (get_next_line(0, &(p->cur_lin)))
 		{
 			line_type = ft_check_line_type(p->cur_lin);
 			if (ft_strlen(p->cur_lin) == 0)
 			{
-				if (prm->line == 2)
-					prm->err_no = 15;
-				return (head);
+				ft_strdel(&(p->cur_lin));
+				return (ft_clear_nodes(&head));
 			}
 			else if (line_type == ROOM)
 			{
-				if (ft_room_check(head, p, prm) == 1)
+				if (ft_room_check(head, p->cur_lin, prm) == 1)
 				{
 					ft_add_room(&head, p, ft_strsplit(p->cur_lin, ' '));
 					(prm->line)++;
@@ -72,8 +70,8 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				}
 				else
 				{
-					ft_clear_nodes(&head);
-					return (head);
+					ft_strdel(&(p->cur_lin));
+					return (ft_clear_nodes(&head));
 				}
 			}
 			else if (line_type == STRT)
@@ -86,10 +84,9 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				}
 				else
 				{
-					ft_clear_nodes(&head);
 					ft_strdel(&(p->cur_lin));
 					prm->err_no = 6;
-					return (head);
+					return (ft_clear_nodes(&head));
 				}
 			}
 			else if (line_type == FNSH)
@@ -102,28 +99,25 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				}
 				else
 				{
-					ft_clear_nodes(&head);
 					ft_strdel(&(p->cur_lin));
 					prm->err_no = 7;
-					return (head);
+					return (ft_clear_nodes(&head));
 				}
 			}
 			else if (line_type == CMNT)
 			{
 				(prm->line)++;
 				prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
-				ft_strdel(&(p->cur_lin));
 			}
 			else if (line_type == ERRO || line_type == ANTS)
 			{
 				prm->err_no = 11;
-				ft_clear_nodes(&head);
-				return (head);
+				ft_strdel(&(p->cur_lin));
+				return (ft_clear_nodes(&head));
 			}
 			else if (line_type == CONN)
 			{
 				(prm->line)++;
-				ft_strdel(&(p->cur_lin));
 				return (head);
 			}
 		}

@@ -69,9 +69,9 @@ static int		ft_give_line(char **str, char **line)
 	return (1);
 }
 
-static int		ft_read_fd(char *buff, t_line *curr)
+static ssize_t	ft_read_fd(char *buff, t_line *curr)
 {
-	int		ret;
+	ssize_t	ret;
 	char	*temp;
 
 	if (!(ret = read(curr->fd, buff, BUFF_SIZE)))
@@ -88,7 +88,7 @@ int				get_next_line(const int fd, char **line)
 	static t_line	*list = NULL;
 	t_line			*curr;
 	char			buff[BUFF_SIZE + 1];
-	int				xr;
+	ssize_t			xr;
 
 	if (fd < 0 || line == NULL || BUFF_SIZE < 1)
 		return (-1);

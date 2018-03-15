@@ -12,28 +12,25 @@
 
 #include "lem_in.h"
 
-int		ft_check_nodes(t_nodes **all, t_antparse *p, t_lemin *prm)
+t_nodes		*ft_check_nodes(t_nodes **all, t_antparse *p, t_lemin *prm)
 {
 	if (p->start != 1 && p->finish == 1)
 	{
 		prm->err_no = 13;
-		ft_clear_nodes(all);
 		ft_strdel(&(prm->input));
-		return (-1);
+		return (ft_clear_nodes(all));
 	}
 	else if (p->start == 1 && p->finish != 1)
 	{
 		prm->err_no = 14;
-		ft_clear_nodes(all);
 		ft_strdel(&(prm->input));
-		return (-1);
+		return (ft_clear_nodes(all));
 	}
 	else if (p->start != 1 && p->finish != 1)
 	{
 		prm->err_no = 15;
-		ft_clear_nodes(all);
 		ft_strdel(&(prm->input));
-		return (-1);
+		return (ft_clear_nodes(all));
 	}
-	return (1);
+	return (*all);
 }

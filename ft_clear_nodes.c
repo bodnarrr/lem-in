@@ -12,17 +12,32 @@
 
 #include "lem_in.h"
 
-void			ft_clear_nodes(t_nodes **all)
+static void		ft_clear_conns(t_nodes *curr_node)
+{
+	t_conns		*fordel;
+
+	if (!curr_node)
+		return ;
+	while (curr_node->conn)
+	{
+		fordel = curr_node->conn;
+		curr_node->conn = curr_node->conn->next;
+		free(fordel);
+	}
+}
+
+t_nodes			*ft_clear_nodes(t_nodes **all)
 {
 	t_nodes		*fordel;
 
-	if (!all || !*all)
-		return ;
 	while (*all)
 	{
 		fordel = *all;
 		ft_strdel(&((*all)->name));
 		*all = (*all)->next;
+		if (fordel->conn)
+			ft_clear_conns(fordel);
 		free(fordel);
 	}
+	return (NULL);
 }

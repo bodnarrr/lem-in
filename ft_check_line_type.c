@@ -21,6 +21,8 @@ static int		ft_check_if_room(char **lines)
 	res = 0;
 	if (ft_str_allnum(lines[1]) && ft_str_allnum(lines[2]))
 		res = 1;
+	if (ft_strequ(lines[1], "-") || ft_strequ(lines[2], "-"))
+		res = 0;
 	fordel = lines;
 	i = 0;
 	while (lines[i])

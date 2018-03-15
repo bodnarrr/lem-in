@@ -13,7 +13,7 @@
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char const	*g_errors[16] = {
+char const	*g_errors[19] = {
 	"Error: incorrect input for ants!",
 	"Error: no ants!",
 	"Error: number of ants can't be negative!",
@@ -21,7 +21,7 @@ char const	*g_errors[16] = {
 	"Error: number of ants can't be more than MAX_INT!",
 	"Error: nothing was read!",
 	"Error: double start!",
-	"Error: double finish!",
+	"Error: double end!",
 	"Error: no connections between the nodes",
 	"Error: the rooms can't have same names",
 	"Error: the rooms can't have same coordinates",
@@ -29,6 +29,9 @@ char const	*g_errors[16] = {
 	"Error: incorrect room name!",
 	"Error: no start room!",
 	"Error: no end room!",
-	"Error: no start and no end!"};
+	"Error: no start and no end!",
+	"Error: waiting for links, not rooms!",
+	"Error: incorrect input for links!",
+	"Error: there is not room with that name"};
 
 #endif

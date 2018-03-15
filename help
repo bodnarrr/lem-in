@@ -4,7 +4,7 @@ LINE TYPES:							ID
 2. <##start> - start				2+
 3. <##end> - finish					3+
 4. <#any inf> - comment				4+
-5. <string int int> - room			5
+5. <string int int> - room			5+
 6. <str-str> - connect				6+
 7. <all other> - error				0+
 8. <L any inf> - error				0+
@@ -23,7 +23,7 @@ ANTS ERRORS
 ROOMS ERRORS
 
 "Error: double start!",										6
-"Error: double finish!"										7
+"Error: double end!"										7
 "Error: no connections between the nodes"					8
 "Error: the rooms can't have same names"                    9
 "Error: the rooms can't have same coordinates"				10
@@ -32,3 +32,6 @@ ROOMS ERRORS
 "Error: no start room!"										13
 "Error: no end room!"										14
 "Error: no start and no end!"								15
+"Error: waiting for links, not rooms!"						16
+"Error: incorrect input for links!"							17
+"Error: there is not room with that name"					18
