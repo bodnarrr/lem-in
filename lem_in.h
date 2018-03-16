@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:20:29 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/09 20:20:30 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/16 17:59:38 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_nodes
 	int			dist;
 	int			x;
 	int			y;
+	int 		ant_n;
 	t_conns		*conn;
 	t_nodes		*came_from;
 	t_nodes		*next;
@@ -75,7 +76,6 @@ typedef struct	s_antparse
 {
 	char		start;
 	char		finish;
-	bool		ants;
 	char		*cur_lin;
 }				t_antparse;
 
@@ -89,6 +89,7 @@ t_nodes			*ft_clear_nodes(t_nodes **all);
 t_nodes			*ft_check_nodes(t_nodes **all, t_antparse *p, t_lemin *prm);
 t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm);
 void			ft_traverse(t_nodes **all);
+void			ft_print_result(t_nodes *nodes, t_lemin prm);
 
 
 

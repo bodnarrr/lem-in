@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:12:33 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/09 20:12:34 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/16 18:47:41 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,21 @@ int			main(void)
        }
        test_copy = test_copy->next;
    }
-	ft_printf("Looks like all infomation was saved correctly\n");
+	ft_printf("Looks like all information was saved correctly\n");
 	ft_traverse(&nodes);
-	ft_printf("Traversed\n");
-    test_copy = nodes;
-    while (test_copy->fin != 1)
-        test_copy = test_copy->next;
-    while (test_copy)
-    {
-        if (test_copy->start != 1)
-            ft_printf("%s--->", test_copy->name);
-        else
-            ft_printf("%s\n", test_copy->name);
-        test_copy = test_copy->came_from;
-    }
+	test_copy = nodes;
+	while (test_copy->fin != 1)
+			test_copy = test_copy->next;
+	while (test_copy)
+	{
+		if (test_copy->start != 1)
+			ft_printf("%s--->", test_copy->name);
+		else
+			ft_printf("%s\n", test_copy->name);
+		test_copy = test_copy->came_from;
+	}
+	 ft_print_result(nodes, prm);
+
 	// if (ft_check_got_end(&nodes) == NULL && ft_print_ant_err(&prm))
 	// 	return (1);
 	ft_clear_nodes(&nodes);
