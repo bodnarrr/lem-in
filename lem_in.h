@@ -88,6 +88,7 @@ void			ft_clear_lines(char **str, int lines);
 t_nodes			*ft_clear_nodes(t_nodes **all);
 t_nodes			*ft_check_nodes(t_nodes **all, t_antparse *p, t_lemin *prm);
 t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm);
+void			ft_traverse(t_nodes **all);
 
 
 

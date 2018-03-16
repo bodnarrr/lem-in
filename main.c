@@ -59,11 +59,24 @@ int			main(void)
        }
        test_copy = test_copy->next;
    }
-	ft_printf("Looks like all OK\n");
+	ft_printf("Looks like all infomation was saved correctly\n");
+	ft_traverse(&nodes);
+	ft_printf("Traversed\n");
+    test_copy = nodes;
+    while (test_copy->fin != 1)
+        test_copy = test_copy->next;
+    while (test_copy)
+    {
+        if (test_copy->start != 1)
+            ft_printf("%s--->", test_copy->name);
+        else
+            ft_printf("%s\n", test_copy->name);
+        test_copy = test_copy->came_from;
+    }
+	// if (ft_check_got_end(&nodes) == NULL && ft_print_ant_err(&prm))
+	// 	return (1);
 	ft_clear_nodes(&nodes);
 	ft_strdel(&(prm.input));
-
-	
 	// 	ft_print_nodes_err(&prm);
 	// // connect correct connections;
 	// ft_traverse(nodes);

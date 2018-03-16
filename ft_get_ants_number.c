@@ -21,7 +21,7 @@ int			ft_print_ant_err(t_lemin *prm)
 		ft_printf("Line %d: ", prm->line);
 		ft_printf("Some crazy ERROR!\n");
 		return (1);
-	}	
+	}
 	ft_printf("Error No. %d\n", prm->err_no);
 	ft_printf("Line %d: ", prm->line);
 	ft_printf("%s\n", g_errors[prm->err_no]);
@@ -52,6 +52,7 @@ static int	ft_check_anterr_type(char *str, t_lemin *prm)
 int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 {
 	int		line_type;
+
 	if (get_next_line(0, &(p->cur_lin)) == 1)
 	{
 		line_type = ft_check_line_type(p->cur_lin);

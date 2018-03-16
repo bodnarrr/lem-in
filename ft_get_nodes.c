@@ -126,6 +126,3 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 	}
 	return (head);
 }
-
-
-	//check if node is NULL before free

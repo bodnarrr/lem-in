@@ -17,8 +17,8 @@ static void		ft_add_new_conn(t_nodes *add, t_nodes *add_to)
 	t_conns		*new;
 	t_conns		*cpy;
 
-    if (add == add_to)
-        return ;
+	if (add == add_to)
+		return ;
 	if ((cpy = add_to->conn))
 	{
 		while (cpy->next)
@@ -35,9 +35,9 @@ static void		ft_add_new_conn(t_nodes *add, t_nodes *add_to)
 	else
 	{
 		new = (t_conns*)malloc(sizeof(t_conns));
-        new->node = add;
-        new->next = NULL;
-        add_to->conn = new;
+		new->node = add;
+		new->next = NULL;
+		add_to->conn = new;
 	}
 }
 
@@ -65,7 +65,7 @@ static void		ft_add_conn(t_nodes **all, char **names)
 	ft_clear_lines(names, 2);
 }
 
-static int	ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
+static int		ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
 {
 	int		res;
 	char	**room_names;
@@ -93,9 +93,9 @@ static int	ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
 	return (res);
 }
 
-t_nodes		*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
+t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
 {
-	int		line_type;
+	int			line_type;
 
 	if (p->cur_lin)
 	{
@@ -138,7 +138,7 @@ t_nodes		*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
 				ft_strdel(&(p->cur_lin));
 				return (ft_clear_nodes(all));
 			}
-			else if(line_type == CMNT)
+			else if (line_type == CMNT)
 			{
 				(prm->line)++;
 				prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));

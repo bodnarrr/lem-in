@@ -12,9 +12,9 @@
 
 #include "lem_in.h"
 
-static void		ft_clear_queue(t_queque *q)
+static void		ft_clear_queue(t_queue *q)
 {
-	t_queque	*fordel;
+	t_queue		*fordel;
 
 	fordel = NULL;
 	while (q)
@@ -25,30 +25,54 @@ static void		ft_clear_queue(t_queque *q)
 	}
 }
 
-void			ft_traverse(t_nodes *all)
+static t_queue	*ft_queue_add(t_queue *all, t_nodes *add, int dist, t_nodes *from)
 {
-	t_queque	*q;
-	t_queque	*q_head;
-	t_nodes		*head;
-	t_nodes		*curr;
-	
+	t_queue		*head;
+	t_queue		*new;
+
 	head = all;
-	while (all->start != 1)
-		all = all->next;
-	q = ft_queue_add(q, all, 0, NULL);
-	q_head = q;
-	curr = NULL;
-	while (q)
+	new = (t_queue*)malloc(sizeof(t_queue));
+	new->node = add;
+	add->came_from = from;
+	add->dist = dist;
+	new->next = NULL;
+	if (head)
 	{
-		while (q->room->conn) //while there rooms connected with current
-			if (q->room->conn->visit == 0)
-				q = ft_queue_add(q, q->room->conn, q->room->dist + 1, q->room);
-		q->room->came_from = curr; //save pointer to room where we have come
-		curr = q->room; //save current room
-		q->room->visit = 1;
-		if (q->room->fin == 1)
-			break ;
-		q = q->next;
+		while (head->next)
+			head = head->next;
+		head->next = new;
 	}
-	ft_clear_queue(q_head);
+	else
+		all = new;
+	return (all);
+}
+
+void			ft_traverse(t_nodes **all)
+{
+	t_queue		*q;
+	t_queue		*q_h;
+	t_nodes		*head;
+	t_conns		*links;
+
+	q = NULL;
+	head = *all;
+	while (head->start != 1)
+		head = head->next;
+	q = ft_queue_add(q, head, 0, NULL);
+	q_h = q;
+	while (q_h)
+	{
+		if (q_h->node->fin == 1)
+			break ;
+		links = q_h->node->conn;
+		while (links)
+		{
+			if (links->node->visit == 0)
+				q = ft_queue_add(q, links->node, q_h->node->dist + 1, q_h->node);
+			links = links->next;
+		}
+		q_h->node->visit = 1;
+		q_h = q_h->next;
+	}
+	ft_clear_queue(q);
 }

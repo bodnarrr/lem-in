@@ -15,7 +15,7 @@
 void		ft_add_connects(char *name1, char *name2, t_nodes *all)
 {
 	t_nodes	*head;
-	
+
 	head = all;
 	while (all != NULL && ft_strequ(name1, all->name) != 1)
 		all = all->next;
@@ -23,5 +23,5 @@ void		ft_add_connects(char *name1, char *name2, t_nodes *all)
 	all = head;
 	while (all != NULL && ft_strequ(name2, all->name) != 1)
 		all = all->next;
-	ft_new_conn(head, name1, all); 
+	ft_new_conn(head, name1, all);
 }
