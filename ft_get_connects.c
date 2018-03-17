@@ -41,7 +41,7 @@ static void		ft_add_new_conn(t_nodes *add, t_nodes *add_to)
 	}
 }
 
-static void		ft_add_conn(t_nodes **all, char **names)
+void			ft_add_conn(t_nodes **all, char **names)
 {
 	t_nodes	*name_one;
 	t_nodes	*name_two;
@@ -65,7 +65,7 @@ static void		ft_add_conn(t_nodes **all, char **names)
 	ft_clear_lines(names, 2);
 }
 
-static int		ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
+int				ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
 {
 	int		res;
 	char	**room_names;
@@ -93,63 +93,39 @@ static int		ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
 	return (res);
 }
 
+static t_nodes	*ft_work_conns(t_nodes **all, t_parse *p, t_lemin *prm)
+{
+	int		line_type;
+
+	line_type = ft_check_line_type(p->cur_lin);
+	if (line_type == CONN)
+	{
+		if ((*all = ft_conn_conn(all, p, prm)) == NULL)
+			return (*all);
+	}
+	else if (line_type == ROOM)
+		return (ft_conn_room(all, p, prm));
+	else if (line_type == CMNT)
+		*all = ft_conn_cmnt(all, p, prm);
+	else if (line_type == ERRO || line_type == ANTS
+		|| line_type == STRT || line_type == FNSH)
+		return (ft_conn_erro(all, p, prm));
+	return (*all);
+}
+
 t_nodes			*ft_get_connects(t_nodes **all, t_parse *p, t_lemin *prm)
 {
-	int			line_type;
-
 	if (p->cur_lin)
-	{
-		if (ft_conn_check(*all, p->cur_lin, prm) == 1)
-		{
-			ft_add_conn(all, ft_strsplit(p->cur_lin, '-'));
-			(prm->line)++;
-			prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
-		}
-		else
-		{
-			ft_strdel(&(p->cur_lin));
-			return (ft_clear_nodes(all));
-		}
-	}
+		if ((*all = ft_conn_conn(all, p, prm)) == NULL)
+			return (*all);
 	while (1)
 	{
 		if (get_next_line(0, &(p->cur_lin)))
 		{
-			line_type = ft_check_line_type(p->cur_lin);
 			if (ft_strlen(p->cur_lin) == 0)
 				return (*all);
-			else if (line_type == CONN)
-			{
-				if (ft_conn_check(*all, p->cur_lin, prm) == 1)
-				{
-					ft_add_conn(all, ft_strsplit(p->cur_lin, '-'));
-					(prm->line)++;
-					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
-				}
-				else
-				{
-					ft_strdel(&(p->cur_lin));
-					return (ft_clear_nodes(all));
-				}
-			}
-			else if (line_type == ROOM)
-			{
-				prm->err_no = 16;
-				ft_strdel(&(p->cur_lin));
-				return (ft_clear_nodes(all));
-			}
-			else if (line_type == CMNT)
-			{
-				(prm->line)++;
-				prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
-			}
-			else if (line_type == ERRO || line_type == ANTS
-				|| line_type == STRT || line_type == FNSH)
-			{
-				prm->err_no = 17;
-				ft_strdel(&(p->cur_lin));
-				return (ft_clear_nodes(all));
-			}
+			else if ((*all = ft_work_conns(all, p, prm)) == NULL)
+				return (*all);
 		}
 		else
 			return (*all);

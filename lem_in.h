@@ -60,6 +60,7 @@ typedef struct		s_lemin
 	char			*input;
 	char			*road;
 	bool			proad;
+	bool			m;
 }					t_lemin;
 
 typedef struct		s_antparse
@@ -80,7 +81,13 @@ t_nodes				*ft_check_nodes(t_nodes **all, t_parse *p, t_lemin *prm);
 t_nodes				*ft_get_connects(t_nodes **all, t_parse *p, t_lemin *prm);
 void				ft_traverse(t_nodes **all, t_queue *q);
 void				ft_print_result(t_nodes *nodes, t_lemin prm);
-char				*ft_join_lem(char **str1, char **str2);
+char				*ft_join_lem(char **str1, char **str2, t_lemin *prm);
 t_nodes				*ft_check_if_road(t_nodes **all, t_lemin *prm);
+t_nodes				*ft_conn_conn(t_nodes **all, t_parse *p, t_lemin *prm);
+int					ft_conn_check(t_nodes *all, char *str, t_lemin *prm);
+void				ft_add_conn(t_nodes **all, char **names);
+t_nodes				*ft_conn_room(t_nodes **all, t_parse *p, t_lemin *prm);
+t_nodes				*ft_conn_cmnt(t_nodes **all, t_parse *p, t_lemin *prm);
+t_nodes				*ft_conn_erro(t_nodes **all, t_parse *p, t_lemin *prm);
 
 #endif

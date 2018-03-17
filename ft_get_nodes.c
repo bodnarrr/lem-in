@@ -66,7 +66,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_parse *p)
 				{
 					ft_add_room(&head, p, ft_strsplit(p->cur_lin, ' '));
 					(prm->line)++;
-					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin), prm);
 				}
 				else
 				{
@@ -80,7 +80,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_parse *p)
 				{
 					p->start = 0;
 					(prm->line)++;
-					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin), prm);
 				}
 				else
 				{
@@ -95,7 +95,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_parse *p)
 				{
 					p->finish = 0;
 					(prm->line)++;
-					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin), prm);
 				}
 				else
 				{
@@ -107,7 +107,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_parse *p)
 			else if (line_type == CMNT)
 			{
 				(prm->line)++;
-				prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
+				prm->input = ft_join_lem(&(prm->input), &(p->cur_lin), prm);
 			}
 			else if (line_type == ERRO || line_type == ANTS)
 			{

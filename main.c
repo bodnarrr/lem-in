@@ -12,6 +12,18 @@
 
 #include "lem_in.h"
 
+void	ft_parse_args(char **av, t_lemin *prm)
+{
+	while (*av)
+	{
+		if (ft_strequ(*av, "-r"))
+			prm->proad = 1;
+		if (ft_strequ(*av, "-m"))
+			prm->m = 1;
+		av++;
+	}
+}
+
 void	ft_initialize_parsing(t_parse *parse, t_lemin *prm, int ac, char **av)
 {
 	if (ac == 0)
@@ -23,8 +35,7 @@ void	ft_initialize_parsing(t_parse *parse, t_lemin *prm, int ac, char **av)
 	prm->line = 0;
 	prm->input = ft_strnew(0);
 	prm->err_no = -1;
-	if (av[1] && ft_strequ(av[1], "-r"))
-		prm->proad = 1;
+	ft_parse_args(av, prm);
 }
 
 int		main(int ac, char **av)

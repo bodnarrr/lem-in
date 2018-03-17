@@ -12,13 +12,18 @@
 
 #include "lem_in.h"
 
-char		*ft_join_lem(char **str1, char **str2)
+char		*ft_join_lem(char **str1, char **str2, t_lemin *prm)
 {
 	char	*res;
 	char	*newline;
 
-	newline = ft_strdup("\n");
-	res = ft_str_clean_join(str1, &newline);
-	res = ft_str_clean_join(&res, str2);
+	if (prm->line == 0)
+		res = ft_str_clean_join(str1, str2);
+	else
+	{
+		newline = ft_strdup("\n");
+		res = ft_str_clean_join(str1, &newline);
+		res = ft_str_clean_join(&res, str2);
+	}
 	return (res);
 }

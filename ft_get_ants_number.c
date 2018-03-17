@@ -57,13 +57,13 @@ int			ft_get_ants_number(t_lemin *prm, t_parse *p)
 		if (line_type == ANTS && ft_lem_int(p->cur_lin))
 		{
 			prm->ants = ft_atoi(p->cur_lin);
-			prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
+			prm->input = ft_join_lem(&(prm->input), &(p->cur_lin), prm);
 			ft_strdel(&(p->cur_lin));
 			(prm->line)++;
 			return (prm->ants);
 		}
 		else if (line_type == CMNT && (prm->input =
-			ft_join_lem(&(prm->input), &(p->cur_lin))))
+			ft_join_lem(&(prm->input), &(p->cur_lin), prm)))
 		{
 			ft_strdel(&(p->cur_lin));
 			(prm->line)++;
