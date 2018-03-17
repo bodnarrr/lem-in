@@ -6,7 +6,7 @@
 #    By: abodnar <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/16 12:17:53 by abodnar           #+#    #+#              #
-#    Updated: 2018/03/16 18:24:46 by abodnar          ###   ########.fr        #
+#    Updated: 2018/03/17 16:36:33 by abodnar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = libftprintf.a
 
 SRCS =	main.c ft_get_ants_number.c ft_check_line_type.c ft_get_nodes.c \
 		ft_add_room.c ft_clear_nodes.c ft_check_nodes.c ft_get_connects.c \
-		ft_clear_lines.c ft_traverse.c ft_print_result.c
+		ft_clear_lines.c ft_traverse.c ft_print_result.c ft_join_lem.c
 		
 
 OBJECTS = $(SRCS:.c=.o)

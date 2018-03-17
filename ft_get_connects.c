@@ -103,7 +103,7 @@ t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
 		{
 			ft_add_conn(all, ft_strsplit(p->cur_lin, '-'));
 			(prm->line)++;
-			prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+			prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 		}
 		else
 		{
@@ -124,7 +124,7 @@ t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
 				{
 					ft_add_conn(all, ft_strsplit(p->cur_lin, '-'));
 					(prm->line)++;
-					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 				}
 				else
 				{
@@ -141,7 +141,7 @@ t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
 			else if (line_type == CMNT)
 			{
 				(prm->line)++;
-				prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+				prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 			}
 			else if (line_type == ERRO || line_type == ANTS
 				|| line_type == STRT || line_type == FNSH)

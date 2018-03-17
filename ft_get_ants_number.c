@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 14:08:27 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/12 14:08:29 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 16:34:57 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int			ft_get_ants_number(t_lemin *prm, t_antparse *p)
 			&& ft_atoi(p->cur_lin) <= INT_MAX)
 		{
 			prm->ants = ft_atoi(p->cur_lin);
-			prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+			prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 			ft_strdel(&(p->cur_lin));
 			(prm->line)++;
 			return (prm->ants);
 		}
 		else if (line_type == CMNT && (prm->input =
-			ft_str_clean_join(&(prm->input), &(p->cur_lin))))
+			ft_join_lem(&(prm->input), &(p->cur_lin))))
 		{
 			ft_strdel(&(p->cur_lin));
 			(prm->line)++;

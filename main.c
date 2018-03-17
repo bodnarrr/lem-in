@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:12:33 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/16 18:47:41 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 16:43:08 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int			main(void)
 	// t_road		*road;
     t_nodes		*nodes;
     t_nodes     *test_copy;
-    t_conns		*test_conns;
 	t_lemin		prm;
 	t_antparse	parse;
 
@@ -43,23 +42,6 @@ int			main(void)
 		return (1);
 	if (ft_get_connects(&nodes, &parse, &prm) == NULL && ft_print_ant_err(&prm))
 		return (1);
-	test_copy = nodes;
-	while (test_copy)
-   {
-       ft_printf("Name: %s\nX = %d\nY = %d\n", test_copy->name, test_copy->x, test_copy->y);
-       if (test_copy->conn)
-       {
-       	test_conns = test_copy->conn;
-           while(test_conns)
-           {
-               ft_printf("conn = %s\n", test_conns->node->name);
-               test_conns = test_conns->next;
-           }
-           ft_printf("\n");
-       }
-       test_copy = test_copy->next;
-   }
-	ft_printf("Looks like all information was saved correctly\n");
 	ft_traverse(&nodes);
 	test_copy = nodes;
 	while (test_copy->fin != 1)
@@ -72,6 +54,7 @@ int			main(void)
 			ft_printf("%s\n", test_copy->name);
 		test_copy = test_copy->came_from;
 	}
+	ft_printf("%s\n", prm.input);
 	 ft_print_result(nodes, prm);
 
 	// if (ft_check_got_end(&nodes) == NULL && ft_print_ant_err(&prm))

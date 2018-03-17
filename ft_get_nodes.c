@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:16:40 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/11 12:16:41 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 16:39:30 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				{
 					ft_add_room(&head, p, ft_strsplit(p->cur_lin, ' '));
 					(prm->line)++;
-					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 				}
 				else
 				{
@@ -80,7 +80,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				{
 					p->start = 0;
 					(prm->line)++;
-					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 				}
 				else
 				{
@@ -95,7 +95,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 				{
 					p->finish = 0;
 					(prm->line)++;
-					prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+					prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 				}
 				else
 				{
@@ -107,7 +107,7 @@ t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
 			else if (line_type == CMNT)
 			{
 				(prm->line)++;
-				prm->input = ft_str_clean_join(&(prm->input), &(p->cur_lin));
+				prm->input = ft_join_lem(&(prm->input), &(p->cur_lin));
 			}
 			else if (line_type == ERRO || line_type == ANTS)
 			{
