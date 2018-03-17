@@ -6,13 +6,13 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 14:42:35 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/10 14:42:36 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		ft_add_room(t_nodes **head, t_antparse *p, char **room)
+void		ft_add_room(t_nodes **head, t_parse *p, char **room)
 {
 	t_nodes	*new;
 	t_nodes	*all;

@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:04 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/14 14:29:04 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int		ft_conn_check(t_nodes *all, char *str, t_lemin *prm)
 	return (res);
 }
 
-t_nodes			*ft_get_connects(t_nodes **all, t_antparse *p, t_lemin *prm)
+t_nodes			*ft_get_connects(t_nodes **all, t_parse *p, t_lemin *prm)
 {
 	int			line_type;
 

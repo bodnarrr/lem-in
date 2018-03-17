@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 12:16:40 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 16:39:30 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int		ft_room_check(t_nodes *head, char *str, t_lemin *prm)
 **		On this stage there aren't allocated connections with other nodes
 */
 
-t_nodes			*ft_get_nodes(t_lemin *prm, t_antparse *p)
+t_nodes			*ft_get_nodes(t_lemin *prm, t_parse *p)
 {
 	t_nodes		*head;
 	int			line_type;

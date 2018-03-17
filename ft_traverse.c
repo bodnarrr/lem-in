@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:44:50 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/09 20:44:51 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void		ft_clear_queue(t_queue *q)
 	}
 }
 
-static t_queue	*ft_queue_add(t_queue *all, t_nodes *add, int dist, t_nodes *from)
+static t_queue	*ft_queue_add(t_queue *all, t_nodes *add, int dist,
+	t_nodes *from)
 {
 	t_queue		*head;
 	t_queue		*new;
@@ -47,32 +48,30 @@ static t_queue	*ft_queue_add(t_queue *all, t_nodes *add, int dist, t_nodes *from
 	return (all);
 }
 
-void			ft_traverse(t_nodes **all)
+void			ft_traverse(t_nodes **all, t_queue *q)
 {
-	t_queue		*q;
-	t_queue		*q_h;
+	t_queue		*qh;
 	t_nodes		*head;
 	t_conns		*links;
 
-	q = NULL;
 	head = *all;
 	while (head->start != 1)
 		head = head->next;
 	q = ft_queue_add(q, head, 0, NULL);
-	q_h = q;
-	while (q_h)
+	qh = q;
+	while (qh)
 	{
-		if (q_h->node->fin == 1)
+		if (qh->node->fin == 1)
 			break ;
-		links = q_h->node->conn;
+		links = qh->node->conn;
 		while (links)
 		{
 			if (links->node->visit == 0)
-				q = ft_queue_add(q, links->node, q_h->node->dist + 1, q_h->node);
+				q = ft_queue_add(q, links->node, qh->node->dist + 1, qh->node);
 			links = links->next;
 		}
-		q_h->node->visit = 1;
-		q_h = q_h->next;
+		qh->node->visit = 1;
+		qh = qh->next;
 	}
 	ft_clear_queue(q);
 }

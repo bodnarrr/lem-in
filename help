@@ -35,3 +35,4 @@ ROOMS ERRORS
 "Error: waiting for links, not rooms!"						16
 "Error: incorrect input for links!"							17
 "Error: there is not room with that name"					18
+"Error: no road from start to finish!"						19

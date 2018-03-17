@@ -6,14 +6,14 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 13:17:14 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 14:47:29 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/17 17:28:06 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_ERRORS_H
 # define LEM_IN_ERRORS_H
 
-char const	*g_errors[19] = {
+char const	*g_errors[20] = {
 	"Error: incorrect input for ants!",
 	"Error: no ants!",
 	"Error: number of ants can't be negative!",
@@ -32,6 +32,7 @@ char const	*g_errors[19] = {
 	"Error: no start and no end!",
 	"Error: waiting for links, not rooms!",
 	"Error: incorrect input for links!",
-	"Error: there is not room with that name"};
+	"Error: there is not room with that name",
+	"Error: no road from start to finish!"};
 
 #endif
