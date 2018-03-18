@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_if_road.c                                 :+:      :+:    :+:   */
+/*   ft_print_ant_err.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/17 16:54:56 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 17:28:05 by abodnar          ###   ########.fr       */
+/*   Created: 2018/03/18 17:13:35 by abodnar           #+#    #+#             */
+/*   Updated: 2018/03/18 17:13:35 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "lem_in_errors.h"
 
-t_nodes		*ft_check_if_road(t_nodes **all, t_lemin *prm)
+int				ft_print_ant_err(t_lemin *prm)
 {
-	t_nodes	*head;
-
-	head = *all;
-	while (head->fin != 1)
-		head = head->next;
-	if (head->came_from == NULL)
+	ft_strdel(&(prm->input));
+	if (prm->err_no == -1)
 	{
-		prm->err_no = 19;
-		return (ft_clear_nodes(all));
+		ft_printf("Line %d: ", prm->line);
+		ft_printf("Some crazy ERROR!\n");
+		return (1);
 	}
-	else
-	{
-		if (prm->m)
-			system("afplay fanf.mp3");
-		return (*all);
-	}
+	ft_printf("Line %d: ", prm->line);
+	ft_printf("%s\n", g_errors[prm->err_no]);
+	return (1);
 }

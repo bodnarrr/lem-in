@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:12:33 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/18 14:43:23 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_parse_args(char **av, t_lemin *prm)
 			prm->proad = 1;
 		if (ft_strequ(*av, "-m"))
 			prm->m = 1;
+		if (ft_strequ(*av, "-c"))
+			prm->c = 1;
 		av++;
 	}
 }

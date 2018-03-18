@@ -6,26 +6,11 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 21:05:09 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 17:28:33 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/18 14:43:23 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include "lem_in_errors.h"
-
-int				ft_print_ant_err(t_lemin *prm)
-{
-	ft_strdel(&(prm->input));
-	if (prm->err_no == -1)
-	{
-		ft_printf("Line %d: ", prm->line);
-		ft_printf("Some crazy ERROR!\n");
-		return (1);
-	}
-	ft_printf("Line %d: ", prm->line);
-	ft_printf("%s\n", g_errors[prm->err_no]);
-	return (1);
-}
 
 static void		ft_print_road(t_nodes *all)
 {
@@ -43,7 +28,10 @@ static void		ft_print_road(t_nodes *all)
 			ft_printf("%s\n", head->name);
 		head = head->came_from;
 	}
-	ft_printf("\n");
+	ft_printf("               \\/\n");
+	ft_printf("         ___  _@@\n");
+	ft_printf("        (___)(_)\n");
+	ft_printf("        //|| ||\n");
 }
 
 static t_nodes	*ft_find_end(t_nodes *nodes)
@@ -74,16 +62,56 @@ static int		ft_start_fin(t_lemin prm, t_nodes *end)
 	return (1);
 }
 
+static void		ft_print_colors(t_lemin prm, int n, char *name, int code)
+{
+	if (prm.c == 0)
+	{
+		if (code == 1)
+			ft_printf("L%d-%s ", n, name);
+		if (code == 2)
+			ft_printf("L%d-%s", n, name);
+	}
+	if (prm.c != 0)
+	{
+		if (code == 1)
+			ft_printf("\x1b[38;2;%u;%u;%umL%d-%s \e[0m", prm.color / n * 2, prm.color / n, prm.color / n * 15, n, name);
+		if (code == 2)
+			ft_printf("\x1b[38;2;%u;%u;%umL%d-%s\e[0m", prm.color / n * 2, prm.color / n, prm.color / n * 15, n, name);
+	}
+}
+
+static void		ft_printing_ants(t_nodes *nodes, t_lemin prm)
+{
+	if (nodes->came_from->ant_n > prm.ants)
+		(nodes->ant_n)++;
+	if (nodes->came_from->ant_n <= prm.ants
+		&& nodes->came_from->ant_n > 0)
+	{
+		if (nodes->came_from->came_from
+			&& nodes->came_from->came_from->ant_n <= prm.ants
+			&& nodes->came_from->came_from->ant_n > 0)
+			ft_print_colors(prm, nodes->came_from->ant_n, nodes->name, 1);
+		else
+			ft_print_colors(prm, nodes->came_from->ant_n, nodes->name, 2);
+		(nodes->ant_n)++;
+		if (nodes->came_from->start == 1)
+			(nodes->came_from->ant_n)++;
+	}
+}
+
 void			ft_print_result(t_nodes *nodes, t_lemin prm)
 {
 	t_nodes	*end;
 
+	if (prm.c)
+	{
+		srand(time(NULL));
+		prm.color = rand() % 255;
+	}
 	ft_printf("%s\n\n", prm.input);
 	if (prm.proad)
 		ft_print_road(nodes);
 	end = ft_find_end(nodes);
-	if (prm.m)
-		system("afplay fanf.mp3");
 	if (end->came_from->start == 1 && ft_start_fin(prm, end))
 		return ;
 	while (end->ant_n < prm.ants)
@@ -91,15 +119,7 @@ void			ft_print_result(t_nodes *nodes, t_lemin prm)
 		nodes = end;
 		while (nodes->start != 1)
 		{
-			if (nodes->came_from->ant_n > prm.ants)
-				(nodes->ant_n)++;
-			if (nodes->came_from->ant_n <= prm.ants && nodes->came_from->ant_n > 0)
-			{
-				ft_printf("L%d-%s ", nodes->came_from->ant_n, nodes->name);
-				(nodes->ant_n)++;
-				if (nodes->came_from->start == 1)
-					(nodes->came_from->ant_n)++;
-			}
+			ft_printing_ants(nodes, prm);
 			nodes = nodes->came_from;
 		}
 		ft_printf("\n");

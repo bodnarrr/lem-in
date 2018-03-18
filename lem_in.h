@@ -6,7 +6,7 @@
 /*   By: abodnar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 20:20:29 by abodnar           #+#    #+#             */
-/*   Updated: 2018/03/17 18:38:20 by abodnar          ###   ########.fr       */
+/*   Updated: 2018/03/18 14:43:23 by abodnar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "libftprintf/libftprintf.h"
 # include <stdbool.h>
 # include <limits.h>
+# include <time.h>
 
 typedef struct		s_conns
 {
@@ -61,6 +62,8 @@ typedef struct		s_lemin
 	char			*road;
 	bool			proad;
 	bool			m;
+	bool			c;
+	uint			color;
 }					t_lemin;
 
 typedef struct		s_antparse
@@ -89,5 +92,15 @@ void				ft_add_conn(t_nodes **all, char **names);
 t_nodes				*ft_conn_room(t_nodes **all, t_parse *p, t_lemin *prm);
 t_nodes				*ft_conn_cmnt(t_nodes **all, t_parse *p, t_lemin *prm);
 t_nodes				*ft_conn_erro(t_nodes **all, t_parse *p, t_lemin *prm);
+void				ft_node_cmnt(t_lemin *prm, t_parse *p);
+t_nodes				*ft_node_empty(t_parse *p, t_nodes *head);
+t_nodes				*ft_node_node(t_nodes *head, t_parse *p, t_lemin *prm);
+t_nodes				*ft_node_erroants(t_nodes *head, t_lemin *prm, t_parse *p);
+void				ft_node_strt_ok(t_parse *p, t_lemin *prm);
+int					ft_room_check(t_nodes *head, char *str, t_lemin *prm);
+t_nodes				*ft_node_strt_err(t_parse *p, t_lemin *prm, t_nodes *head);
+void				ft_node_fnsh_ok(t_parse *p, t_lemin *prm);
+t_nodes				*ft_node_fnsh_err(t_parse *p, t_lemin *prm, t_nodes *head);
+t_nodes				*ft_node_conn(t_lemin *prm, t_nodes *head);
 
 #endif
