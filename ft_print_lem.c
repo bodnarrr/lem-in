@@ -62,24 +62,6 @@ static int		ft_start_fin(t_lemin prm, t_nodes *end)
 	return (1);
 }
 
-static void		ft_print_colors(t_lemin prm, int n, char *name, int code)
-{
-	if (prm.c == 0)
-	{
-		if (code == 1)
-			ft_printf("L%d-%s ", n, name);
-		if (code == 2)
-			ft_printf("L%d-%s", n, name);
-	}
-	if (prm.c != 0)
-	{
-		if (code == 1)
-			ft_printf("\x1b[38;2;%u;%u;%umL%d-%s \e[0m", prm.color / n * 2, prm.color / n, prm.color / n * 15, n, name);
-		if (code == 2)
-			ft_printf("\x1b[38;2;%u;%u;%umL%d-%s\e[0m", prm.color / n * 2, prm.color / n, prm.color / n * 15, n, name);
-	}
-}
-
 static void		ft_printing_ants(t_nodes *nodes, t_lemin prm)
 {
 	if (nodes->came_from->ant_n > prm.ants)
@@ -107,6 +89,7 @@ void			ft_print_result(t_nodes *nodes, t_lemin prm)
 	{
 		srand(time(NULL));
 		prm.color = rand() % 255;
+		prm.crn = rand() % 255;
 	}
 	ft_printf("%s\n\n", prm.input);
 	if (prm.proad)

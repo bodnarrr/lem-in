@@ -64,6 +64,7 @@ typedef struct		s_lemin
 	bool			m;
 	bool			c;
 	uint			color;
+	uint			crn;
 }					t_lemin;
 
 typedef struct		s_antparse
@@ -102,5 +103,6 @@ t_nodes				*ft_node_strt_err(t_parse *p, t_lemin *prm, t_nodes *head);
 void				ft_node_fnsh_ok(t_parse *p, t_lemin *prm);
 t_nodes				*ft_node_fnsh_err(t_parse *p, t_lemin *prm, t_nodes *head);
 t_nodes				*ft_node_conn(t_lemin *prm, t_nodes *head);
+void				ft_print_colors(t_lemin prm, int n, char *name, int code);
 
 #endif

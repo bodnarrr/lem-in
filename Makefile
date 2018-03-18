@@ -18,7 +18,7 @@ SRCS =	main.c ft_get_ants_number.c ft_check_line_type.c ft_get_nodes.c \
 		ft_add_room.c ft_clear_nodes.c ft_check_nodes.c ft_get_connects.c \
 		ft_clear_lines.c ft_traverse.c ft_print_lem.c ft_join_lem.c \
 		ft_check_if_road.c ft_connects.c ft_getting_nodes_one.c \
-		ft_getting_nodes_two.c ft_print_ant_err.c
+		ft_getting_nodes_two.c ft_print_ant_err.c ft_print_colors.c
 		
 
 OBJECTS = $(SRCS:.c=.o)
