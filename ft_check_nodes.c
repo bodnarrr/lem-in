@@ -18,18 +18,21 @@ t_nodes		*ft_check_nodes(t_nodes **all, t_parse *p, t_lemin *prm)
 	{
 		prm->err_no = 13;
 		ft_strdel(&(prm->input));
+		ft_strdel(&(p->cur_lin));
 		return (ft_clear_nodes(all));
 	}
 	else if (p->start == 1 && p->finish != 1)
 	{
 		prm->err_no = 14;
 		ft_strdel(&(prm->input));
+		ft_strdel(&(p->cur_lin));
 		return (ft_clear_nodes(all));
 	}
 	else if (p->start != 1 && p->finish != 1)
 	{
 		prm->err_no = 15;
 		ft_strdel(&(prm->input));
+		ft_strdel(&(p->cur_lin));
 		return (ft_clear_nodes(all));
 	}
 	return (*all);

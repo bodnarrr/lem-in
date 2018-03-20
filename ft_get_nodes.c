@@ -59,7 +59,7 @@ static t_nodes	*ft_nodes_ret(t_nodes *head, t_lemin *prm, t_parse *p,
 	else if (line_type == ERRO || line_type == ANTS)
 		return (ft_node_erroants(head, prm, p));
 	else if (line_type == CONN)
-		return (ft_node_conn(prm, head));
+		return (ft_node_conn(prm, head, p));
 	else if (ft_strlen(p->cur_lin) == 0)
 		return (ft_node_empty(p, head));
 	return (head);

@@ -102,7 +102,7 @@ int					ft_room_check(t_nodes *head, char *str, t_lemin *prm);
 t_nodes				*ft_node_strt_err(t_parse *p, t_lemin *prm, t_nodes *head);
 void				ft_node_fnsh_ok(t_parse *p, t_lemin *prm);
 t_nodes				*ft_node_fnsh_err(t_parse *p, t_lemin *prm, t_nodes *head);
-t_nodes				*ft_node_conn(t_lemin *prm, t_nodes *head);
+t_nodes				*ft_node_conn(t_lemin *prm, t_nodes *head, t_parse *p);
 void				ft_print_colors(t_lemin prm, int n, char *name, int code);
 
 #endif
